@@ -1,0 +1,6 @@
+# misc
+.DS_Store
+.venv
+.idea
+localflaskapp.cfg
+

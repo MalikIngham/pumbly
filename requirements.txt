@@ -1,0 +1,5 @@
+Flask==1.1.2
+requests
+Jinja2<3.0.0
+pandas
+pytumblr

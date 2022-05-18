@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link rel="stylesheet" href="/css/index.css">
+        <meta charset="utf-8">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="/js/index.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+        <script type="text/javascript" src="script.js"></script>
+
+    </head>
+    <div class="bg-blue-100 text-gray-800 py-24 -px-6">
+        <div class="text-center">
+            <h1 class="text-5xl md:text-6xl xl:text-7xl font-bold tracking-light mb-12">Pumbly</h1>
+            <h3>View unique posts from users</h3>
+        </div>
+        <div class="flex justify-center">
+            <div class="mb-3 xl:w-96">
+                <div class="input-group relative flex flex-wrap items-stretch w-full mb-4">
+                    <input type="search" class="form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Input blog name" aria-label="Search" aria-describedby="button-addon2" id="blog-name">
+                    <br>
+                    <button type="button" class="mb-2 w-full inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-normal uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" id="search-button">Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</html>
+<script>
+    $('#search-button').click(function(){
+        var formData = new FormData;
+        var input = document.getElementById('blog-name')
+
+        formData.append('blog_name', input.value);
+        console.log(formData)
+        $.ajax({
+            type: "POST",
+            contentType: false,
+            processData: false,
+            data: formData,
+            url: "{{url_for('search')}}",
+            success: function(data) {
+                window.location.href = "{{url_for('search')}}";
+            },
+            error: function(){
+                alert('There was a problem communicating with the server.');
+            }
+        })
+    });
+</script>
