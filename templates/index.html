@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html>
     <head>
         <link rel="stylesheet" href="/css/index.css">
@@ -8,7 +7,6 @@
         <script src="/js/index.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
         <script type="text/javascript" src="script.js"></script>
-
     </head>
     <div class="bg-blue-100 text-gray-800 py-24 -px-6">
         <div class="text-center">
@@ -25,26 +23,25 @@
             </div>
         </div>
     </div>
-</html>
-<script>
-    $('#search-button').click(function(){
-        var formData = new FormData;
-        var input = document.getElementById('blog-name')
+    <script>
+        $('#search-button').click(function() {
+            var formData = new FormData();
+            var input = document.getElementById('blog-name')
 
-        formData.append('blog_name', input.value);
-        console.log(formData)
-        $.ajax({
-            type: "POST",
-            contentType: false,
-            processData: false,
-            data: formData,
-            url: "{{url_for('search')}}",
-            success: function(data) {
-                window.location.href = "{{url_for('search')}}";
-            },
-            error: function(){
-                alert('There was a problem communicating with the server.');
-            }
-        })
-    });
-</script>
+            formData.append('blog_name', input.value);
+            console.log(formData);
+            $.ajax({
+                type: "POST",
+                contentType: false,
+                processData: false,
+                data: formData,
+                url: "{{url_for('search')}}",
+                success: function(data) {
+                    window.location.href = "{{url_for('search')}}";
+                },
+                error: function() {
+                    alert('There was a problem communicating with the server.');
+                }
+            });
+        });
+    </script>
