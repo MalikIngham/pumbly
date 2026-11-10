@@ -1,0 +1,18 @@
+name: pumbly
+
+services:
+  app:
+    build: .
+    init: true
+    ports:
+      # Localhost only, so the dev servers are not exposed to the network
+      - "127.0.0.1:3000:3000"
+      - "127.0.0.1:8000:8000"
+      # Older Tumblr apps have this address registered as their redirect URL
+      - "127.0.0.1:2000:8000"
+    volumes:
+      - ./backend:/app/backend
+      - ./frontend:/app/frontend
+      # Keep the Linux builds out of the Mac's node_modules and .next
+      - /app/frontend/node_modules
+      - /app/frontend/.next

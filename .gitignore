@@ -3,4 +3,8 @@
 .venv
 .idea
 localflaskapp.cfg
-
+.env
+__pycache__/
+.pytest_cache/
+.tumblr_token.json*
+backend/data/
